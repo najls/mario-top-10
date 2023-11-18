@@ -1,0 +1,68 @@
+@font-face {
+    font-family: 'Super Mario 256';
+    src: url('SuperMario256.ttf')  format('truetype');
+}
+
+html { box-sizing: border-box }
+*, *:before, *:after { box-sizing: inherit }
+
+body { font-family: 'Super Mario 256', sans-serif }
+
+ol {
+    counter-reset: place;
+    list-style: none;
+    padding: 0;
+}
+
+li {
+    counter-increment: place;
+    margin: .25rem;
+    padding: 1rem;
+}
+
+li:before {
+    align-items: center;
+    background-color: #6868B0;
+    border: .25rem solid #484888;
+    border-radius: .25rem;
+    color: white;
+    content: counter(place);
+    display: inline-flex;
+    font-size: 3rem;
+    justify-content: center;
+    line-height: 0;
+    outline: .25rem solid black;
+    paint-order: stroke fill;
+    -webkit-text-stroke: .25rem black;
+    min-width: 3.5rem;
+    min-height: 3.5rem;
+}
+
+li:first-of-type:before {
+    background-color: #F8D820;
+    border-color: #D8A038;
+}
+
+li:nth-of-type(2):before {
+    background-color: #00C800;
+    border-color: #008000;
+}
+
+li:nth-of-type(3):before {
+    background-color: #F80080;
+    border-color: #B80050;
+}
+
+h1 {
+    font-size: 2rem;
+    paint-order: stroke fill;
+    text-shadow: black .25rem .25rem 0;
+    -webkit-text-stroke: .125rem black;
+}
+
+h1:first-line { font-size: 1.5rem }
+
+h1 span:first-of-type, h1 span:nth-of-type(9), h1 span:nth-of-type(14) { color: #F80080 }
+h1 span:nth-of-type(2), h1 span:nth-of-type(4), h1 span:nth-of-type(7), h1 span:nth-of-type(12) { color: #6868B0 }
+h1 span:nth-of-type(3), h1 span:nth-of-type(8), h1 span:nth-of-type(11) { color: #F8D820 }
+h1 span:nth-of-type(5), h1 span:nth-of-type(6), h1 span:nth-of-type(10), h1 span:nth-of-type(13), h1 span:nth-of-type(15) { color: #00C800 }
