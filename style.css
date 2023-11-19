@@ -3,66 +3,266 @@
     src: url('SuperMario256.ttf')  format('truetype');
 }
 
+@font-face {
+    font-family: 'Super Mario World';
+    src: url('Super-Mario-World.ttf')  format('truetype');
+}
+
+:root {
+    /* color */
+    --smw-yellow-mid: #f8d820;
+    --smw-yellow-shd: #d8a038;
+    --smw-green-mid: #00c800;
+    --smw-green-shd: #008000;
+    --smw-green-hig: #00f800;
+    --smw-red-mid: #f80080;
+    --smw-red-shd: #b80050;
+    --smw-blue-mid: #6868b0;
+    --smw-blue-shd: #484888;
+    --smw-sky-blue: #0060b8;
+
+    /* spacing */
+    --border-width: 4px;
+    --border-width-inv: -4px;
+}
+
 html { box-sizing: border-box }
 *, *:before, *:after { box-sizing: inherit }
 
-body { font-family: 'Super Mario 256', sans-serif }
+body {
+    background-color: var(--smw-sky-blue);
+    font-family: 'Super Mario 256', sans-serif;
+    font-size: 1.75rem;
+    margin: 0;
+    padding: 2rem 1.5rem 0;
+}
+
+h1, ol {
+    border-right: var(--border-width) solid black;
+    border-left: var(--border-width) solid black;
+}
+
+h1 {
+    background: linear-gradient(
+        to right,
+        var(--smw-green-shd) 7%, /* 7% */
+        var(--smw-green-mid) 7% 14%, /* 7% */
+        var(--smw-green-hig) 14% 21%, /* 7% */
+        white 21% 31%, /* 10% */
+        var(--smw-green-hig) 31% 61%, /* 30% */
+        var(--smw-green-mid) 61% 74%, /* 13% */
+        var(--smw-green-shd) 74% 77%, /* 3% */
+        var(--smw-green-mid) 77% 80%, /* 3% */
+        var(--smw-green-shd) 80% 97%, /* 17% */
+        black 97% /* 3% */
+    );
+    font-size: 2.25rem;
+    margin: 0;
+    paint-order: stroke fill;
+    text-align: center;
+    text-shadow: black .125em .125em 0;
+    -webkit-text-stroke: .063em black;
+}
+
+h1:before, h1:after {
+    content: '';
+    display: block;
+}
+
+h1:before {
+    background: linear-gradient(
+        to right,
+        var(--smw-green-mid) 7%, /* 7% */
+        var(--smw-green-hig) 7% 14%, /* 7% */
+        white 14% 61%, /* 47% */
+        var(--smw-green-hig) 61% 74%, /* 13% */
+        var(--smw-green-mid) 74% 77%, /* 3% */
+        var(--smw-green-hig) 77% 80%, /* 3% */
+        var(--smw-green-mid) 80% 97%, /* 17% */
+        var(--smw-green-shd) 97% /* 3% */
+    );
+    border-top: var(--border-width) solid black;
+    position: relative;
+    top: var(--border-width-inv);
+    height: calc(2 * var(--border-width));
+}
+
+h1:after {
+    background: linear-gradient(
+        to right,
+        black 7%, /* 7% */
+        var(--smw-green-shd) 7% 14%, /* 7% */
+        var(--smw-green-mid) 14% 21%, /* 7% */
+        var(--smw-green-hig) 21% 31%, /* 10% */
+        var(--smw-green-mid) 31% 61%, /* 30% */
+        var(--smw-green-shd) 61% 74%, /* 13% */
+        black 74% 77%, /* 3% */
+        var(--smw-green-shd) 77% 80%, /* 3% */
+        black 80% 97% /* 20% */
+    );
+    border-bottom: calc(2 * var(--border-width)) solid black;
+    height: calc(3 * var(--border-width));
+}
+
+h1 > span {
+    display: block;
+    margin: .5rem 0;
+}
+
+h1 > span:first-line { font-size: 1.75rem }
+h1 span span:first-of-type, h1 span span:nth-of-type(9), h1 span span:nth-of-type(14) { color: var(--smw-red-mid) }
+h1 span span:nth-of-type(2), h1 span span:nth-of-type(4), h1 span span:nth-of-type(7), h1 span span:nth-of-type(12) { color: var(--smw-blue-mid) }
+h1 span span:nth-of-type(3), h1 span span:nth-of-type(8), h1 span span:nth-of-type(11) { color: var(--smw-yellow-mid) }
+h1 span span:nth-of-type(5), h1 span span:nth-of-type(6), h1 span span:nth-of-type(10), h1 span span:nth-of-type(13), h1 span:nth-of-type(15) { color: var(--smw-green-mid) }
 
 ol {
+    background: linear-gradient(
+        to right,
+        var(--smw-green-shd) 11%, /* 11% */
+        var(--smw-green-mid) 11% 18%, /* 7% */
+        var(--smw-green-hig) 18% 25%, /* 7% */
+        white 25% 36%, /* 11% */
+        var(--smw-green-hig) 36% 54%, /* 18% */
+        var(--smw-green-mid) 54% 67%, /* 13% */
+        var(--smw-green-shd) 67% 71%, /* 4% */
+        var(--smw-green-mid) 71% 75%, /* 4% */
+        var(--smw-green-shd) 75% 93%, /* 18% */
+        black 93% /* 7% */
+    );
     counter-reset: place;
     list-style: none;
+    margin: 0 var(--border-width);
     padding: 0;
 }
 
 li {
+    --block-mid: var(--smw-green-mid);
+    --block-shd: var(--smw-green-shd);
+
+    align-items: center;
+    color: white;
     counter-increment: place;
-    margin: .25rem;
+    display: flex;
+    margin: 0;
     padding: 1rem;
+    column-gap: .5rem;
 }
 
-li:before {
+li:first-of-type {
+    --block-mid: var(--smw-yellow-mid);
+    --block-shd: var(--smw-yellow-shd);
+}
+
+li:nth-of-type(2) {
+    --block-mid: var(--smw-blue-mid);
+    --block-shd: var(--smw-blue-shd);
+}
+
+li:nth-of-type(3) {
+    --block-mid: var(--smw-red-mid);
+    --block-shd: var(--smw-red-shd);
+}
+
+li span:after, li span:before { display: block }
+
+li > span:first-child {
+    display: inline-block;
+    min-width: calc(16 * var(--border-width));
+}
+
+li > span:first-child:before,
+li > span:first-child:after {
+    content: '';
+    background: linear-gradient(
+        to right,
+        transparent calc(2 * var(--border-width)),
+        black calc(2 * var(--border-width)) 51%,
+        transparent 51%
+    ), linear-gradient(
+        to left,
+        transparent calc(2 * var(--border-width)),
+        black calc(2 * var(--border-width)) 51%,
+        transparent 51%
+    );
+    height: var(--border-width);
+}
+
+li > span:first-child > span:before,
+li > span:first-child > span:after {
+    content: '';
+    background: linear-gradient(
+        to right,
+        transparent var(--border-width),
+        black var(--border-width) calc(2 * var(--border-width)),
+        var(--block-shd) calc(2 * var(--border-width)) 51%,
+        transparent 51%
+    ), linear-gradient(
+        to left,
+        transparent var(--border-width),
+        black var(--border-width) calc(2 * var(--border-width)),
+        var(--block-shd) calc(2 * var(--border-width)) 51%,
+        transparent 51%
+    );
+    height: var(--border-width);
+}
+
+li > span:first-child > span > span:before,
+li > span:first-child > span > span:after {
+    content: '';
+    background: linear-gradient(
+        to right,
+        black var(--border-width),
+        var(--block-shd) var(--border-width) calc(3 * var(--border-width)),
+        var(--block-mid) calc(3 * var(--border-width)) 51%,
+        transparent 51%
+    ), linear-gradient(
+        to left,
+        black var(--border-width),
+        var(--block-shd) var(--border-width) calc(3 * var(--border-width)),
+        var(--block-mid) calc(3 * var(--border-width)) 51%,
+        transparent 51%
+    );
+    height: var(--border-width);
+}
+
+li > span:first-child > span > span > span { text-align: center }
+li > span:first-child > span > span > span:after {
+    background: linear-gradient(
+        to right,
+        black var(--border-width),
+        var(--block-shd) var(--border-width) calc(2 * var(--border-width)),
+        var(--block-mid) calc(2 * var(--border-width)) 51%,
+        transparent 51%
+    ), linear-gradient(
+        to left,
+        black var(--border-width),
+        var(--block-shd) var(--border-width) calc(2 * var(--border-width)),
+        var(--block-mid) calc(2 * var(--border-width)) 51%,
+        transparent 51%
+    );
     align-items: center;
-    background-color: #6868B0;
-    border: .25rem solid #484888;
-    border-radius: .25rem;
     color: white;
     content: counter(place);
-    display: inline-flex;
-    font-size: 3rem;
-    justify-content: center;
-    line-height: 0;
-    outline: .25rem solid black;
-    paint-order: stroke fill;
-    -webkit-text-stroke: .25rem black;
-    min-width: 3.5rem;
-    min-height: 3.5rem;
-}
-
-li:first-of-type:before {
-    background-color: #F8D820;
-    border-color: #D8A038;
-}
-
-li:nth-of-type(2):before {
-    background-color: #00C800;
-    border-color: #008000;
-}
-
-li:nth-of-type(3):before {
-    background-color: #F80080;
-    border-color: #B80050;
-}
-
-h1 {
+    display: flex;
+    font-family: 'Super Mario World', sans-serif;
     font-size: 2rem;
-    paint-order: stroke fill;
-    text-shadow: black .25rem .25rem 0;
-    -webkit-text-stroke: .125rem black;
+    justify-content: center;
+    letter-spacing: -0.04em;
+    line-height: 0;
+    min-height: calc(10 * var(--border-width));
+    padding-left: .25rem;
+    text-shadow: 0 var(--border-width-inv) 0 black,
+        var(--border-width) var(--border-width-inv) 0 black,
+        var(--border-width) 0 0 black,
+        var(--border-width) var(--border-width) 0 black,
+        0 var(--border-width) 0 black,
+        var(--border-width-inv) var(--border-width) 0 black,
+        var(--border-width-inv) 0 0 black,
+        var(--border-width-inv) var(--border-width-inv) 0 black;
 }
 
-h1:first-line { font-size: 1.5rem }
-
-h1 span:first-of-type, h1 span:nth-of-type(9), h1 span:nth-of-type(14) { color: #F80080 }
-h1 span:nth-of-type(2), h1 span:nth-of-type(4), h1 span:nth-of-type(7), h1 span:nth-of-type(12) { color: #6868B0 }
-h1 span:nth-of-type(3), h1 span:nth-of-type(8), h1 span:nth-of-type(11) { color: #F8D820 }
-h1 span:nth-of-type(5), h1 span:nth-of-type(6), h1 span:nth-of-type(10), h1 span:nth-of-type(13), h1 span:nth-of-type(15) { color: #00C800 }
+li > span:last-child {
+    paint-order: stroke fill;
+    text-shadow: black .063em .063em 0;
+    /* -webkit-text-stroke: .063em black; */
+}
