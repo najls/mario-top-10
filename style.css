@@ -1,11 +1,16 @@
 @font-face {
-    font-family: 'Super Mario 256';
-    src: url('SuperMario256.ttf')  format('truetype');
+    font-family: 'Super Mario World';
+    src: url('Super-Mario-World.ttf')  format('truetype');
 }
 
 @font-face {
-    font-family: 'Super Mario World';
-    src: url('Super-Mario-World.ttf')  format('truetype');
+    font-family: 'Mario World Pixel Filled';
+    src: url('TypefaceMarioWorldPixelFilledRegular-rgVMx.ttf')  format('truetype');
+}
+
+@font-face {
+    font-family: 'Mario World Pixel Outline';
+    src: url('TypefaceMarioWorldPixelOutlineRegular-MVzKp.ttf')  format('truetype');
 }
 
 :root {
@@ -19,114 +24,189 @@
     --smw-red-shd: #b80050;
     --smw-blue-mid: #6868b0;
     --smw-blue-shd: #484888;
-    --smw-sky-blue: #0060b8;
+    --smw-blue-hig: #8080c8;
+
+    --smw-text-yellow: #ffce29;
+    --smw-text-green: #00cd00;
+    --smw-text-red: #ff3939;
+    --smw-text-blue: #00deff;
+
+    --smw-pipe-mid: var(--smw-green-mid);
+    --smw-pipe-shd: var(--smw-green-shd);
+    --smw-pipe-hig: var(--smw-green-hig);
+
+    --smw-sky: #9ce7e7;
 
     /* spacing */
-    --border-width: 4px;
-    --border-width-inv: -4px;
+    --border-width: 3px;
+    --border-width-inv: -3px;
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        --smw-pipe-mid: var(--smw-blue-mid);
+        --smw-pipe-shd: var(--smw-blue-shd);
+        --smw-pipe-hig: var(--smw-blue-hig);
+
+        --smw-sky: #101828;
+    }
 }
 
 html { box-sizing: border-box }
 *, *:before, *:after { box-sizing: inherit }
 
 body {
-    background-color: var(--smw-sky-blue);
-    font-family: 'Super Mario 256', sans-serif;
+    background-color: var(--smw-sky);
+    font-family: 'Super Mario World', sans-serif;
     font-size: 1.75rem;
     margin: 0;
-    padding: 2rem 1.5rem 0;
+    padding: 0;
+    max-width: calc(192 * var(--border-width));
+    margin: 0 auto;
 }
 
-h1, ol {
+h1 {
+    font-family: 'Mario World Pixel Filled', sans-serif;
+    font-size: 4.312rem;
+    font-weight: 400;
+    line-height: 1.625;
+    margin: 0 0 1rem;
+    text-align: center;
+    text-transform: uppercase;
+}
+
+h1:first-line { text-transform: lowercase }
+h1 > span:first-of-type, h1 > span:nth-of-type(9), h1 > span:nth-of-type(14) { color: var(--smw-text-red) !important }
+h1 > span:nth-of-type(2), h1 > span:nth-of-type(4), h1 > span:nth-of-type(7), h1 > span:nth-of-type(12) { color: var(--smw-text-blue) }
+h1 > span:nth-of-type(3), h1 > span:nth-of-type(8), h1 > span:nth-of-type(11) { color: var(--smw-text-yellow) }
+h1 > span:nth-of-type(5), h1 > span:nth-of-type(6), h1 > span:nth-of-type(10), h1 > span:nth-of-type(13), h1 > span:nth-of-type(15) { color: var(--smw-text-green) }
+h1 > span, h1 > span > span:first-of-type { position: relative }
+
+h1 > span > span:nth-last-of-type(2) {
+    color: transparent;
+    text-shadow: calc(2 * var(--border-width)) calc(2 * var(--border-width)) 0 black
+}
+
+h1 > span:first-of-type,
+h1 > span:nth-of-type(2) { left: calc(3 * var(--border-width)) }
+h1 > span:nth-of-type(3) { left: calc(2 * var(--border-width)) }
+h1 > span:nth-of-type(4) { left: calc(3 * var(--border-width-inv)) }
+h1 > span:nth-of-type(5) { left: calc(4 * var(--border-width-inv)) }
+h1 > span:nth-of-type(6) { left: calc(12 * var(--border-width)) }
+h1 > span:nth-of-type(7) { left: calc(2 * var(--border-width-inv)) }
+h1 > span:nth-of-type(8) { left: calc(5 * var(--border-width-inv)) }
+h1 > span:nth-of-type(9) { left: calc(6 * var(--border-width-inv)) }
+h1 > span:nth-of-type(10) { left: calc(13 * var(--border-width-inv)) }
+h1 > span:nth-of-type(11) { left: calc(6 * var(--border-width)) }
+h1 > span:nth-of-type(12) { left: calc(6 * var(--border-width-inv)) }
+h1 > span:nth-of-type(13) { left: calc(11 * var(--border-width-inv)) }
+h1 > span:nth-of-type(14) { left: calc(9 * var(--border-width-inv)) }
+h1 > span:nth-of-type(15) { left: calc(11 * var(--border-width-inv)) }
+
+h1 > span:nth-of-type(4) > span:not(:nth-of-type(2)) { z-index: -1 }
+h1 > span:nth-of-type(7) > span:not(:nth-of-type(2)) { z-index: -4 }
+h1 > span:nth-of-type(7) > span:nth-of-type(2) { z-index: -6 }
+h1 > span:nth-of-type(8) > span:not(:nth-of-type(2)) { z-index: -5 }
+h1 > span:nth-of-type(8) > span:nth-of-type(2) { z-index: -6 }
+h1 > span:nth-of-type(10) > span:not(:nth-of-type(2)) { z-index: -4 }
+h1 > span:nth-of-type(10) > span:nth-of-type(2) { z-index: -6 }
+h1 > span:nth-of-type(12) > span:not(:nth-of-type(2)) { z-index: -1 }
+h1 > span:nth-of-type(13) > span:not(:nth-of-type(2)) { z-index: -2 }
+h1 > span:nth-of-type(15) > span:not(:nth-of-type(2)) { z-index: -4 }
+h1 > span:nth-of-type(15) > span:nth-of-type(2) { z-index: -6 }
+h1 > span > span:nth-of-type(2) { z-index: -3 }
+
+h1 > span > span:not(:first-of-type) {
+    position: absolute;
+    text-transform: none;
+    top: .167em;
+    left: 0;
+}
+
+h1 > span > span:last-of-type {
+    color: black;
+    font-family: 'Mario World Pixel Outline', sans-serif;
+    text-shadow: none;
+}
+
+main { padding: 0 1rem }
+
+div, ol {
     border-right: var(--border-width) solid black;
     border-left: var(--border-width) solid black;
 }
 
-h1 {
+div {
     background: linear-gradient(
         to right,
-        var(--smw-green-shd) 7%, /* 7% */
-        var(--smw-green-mid) 7% 14%, /* 7% */
-        var(--smw-green-hig) 14% 21%, /* 7% */
+        var(--smw-pipe-shd) 7%, /* 7% */
+        var(--smw-pipe-mid) 7% 14%, /* 7% */
+        var(--smw-pipe-hig) 14% 21%, /* 7% */
         white 21% 31%, /* 10% */
-        var(--smw-green-hig) 31% 61%, /* 30% */
-        var(--smw-green-mid) 61% 74%, /* 13% */
-        var(--smw-green-shd) 74% 77%, /* 3% */
-        var(--smw-green-mid) 77% 80%, /* 3% */
-        var(--smw-green-shd) 80% 97%, /* 17% */
+        var(--smw-pipe-hig) 31% 61%, /* 30% */
+        var(--smw-pipe-mid) 61% 74%, /* 13% */
+        var(--smw-pipe-shd) 74% 77%, /* 3% */
+        var(--smw-pipe-mid) 77% 80%, /* 3% */
+        var(--smw-pipe-shd) 80% 97%, /* 17% */
         black 97% /* 3% */
     );
-    font-size: 2.25rem;
-    margin: 0;
-    paint-order: stroke fill;
-    text-align: center;
-    text-shadow: black .125em .125em 0;
-    -webkit-text-stroke: .063em black;
+    position: relative;
+    height: calc(14 * var(--border-width));
 }
 
-h1:before, h1:after {
+div:before, div:after {
     content: '';
     display: block;
+    position: relative;
 }
 
-h1:before {
+div:before {
     background: linear-gradient(
         to right,
-        var(--smw-green-mid) 7%, /* 7% */
-        var(--smw-green-hig) 7% 14%, /* 7% */
+        var(--smw-pipe-mid) 7%, /* 7% */
+        var(--smw-pipe-hig) 7% 14%, /* 7% */
         white 14% 61%, /* 47% */
-        var(--smw-green-hig) 61% 74%, /* 13% */
-        var(--smw-green-mid) 74% 77%, /* 3% */
-        var(--smw-green-hig) 77% 80%, /* 3% */
-        var(--smw-green-mid) 80% 97%, /* 17% */
-        var(--smw-green-shd) 97% /* 3% */
+        var(--smw-pipe-hig) 61% 74%, /* 13% */
+        var(--smw-pipe-mid) 74% 77%, /* 3% */
+        var(--smw-pipe-hig) 77% 80%, /* 3% */
+        var(--smw-pipe-mid) 80% 97%, /* 17% */
+        var(--smw-pipe-shd) 97% /* 3% */
     );
     border-top: var(--border-width) solid black;
-    position: relative;
     top: var(--border-width-inv);
     height: calc(2 * var(--border-width));
 }
 
-h1:after {
+div:after {
     background: linear-gradient(
         to right,
         black 7%, /* 7% */
-        var(--smw-green-shd) 7% 14%, /* 7% */
-        var(--smw-green-mid) 14% 21%, /* 7% */
-        var(--smw-green-hig) 21% 31%, /* 10% */
-        var(--smw-green-mid) 31% 61%, /* 30% */
-        var(--smw-green-shd) 61% 74%, /* 13% */
+        var(--smw-pipe-shd) 7% 14%, /* 7% */
+        var(--smw-pipe-mid) 14% 21%, /* 7% */
+        var(--smw-pipe-hig) 21% 31%, /* 10% */
+        var(--smw-pipe-mid) 31% 61%, /* 30% */
+        var(--smw-pipe-shd) 61% 74%, /* 13% */
         black 74% 77%, /* 3% */
-        var(--smw-green-shd) 77% 80%, /* 3% */
+        var(--smw-pipe-shd) 77% 80%, /* 3% */
         black 80% 97% /* 20% */
     );
     border-bottom: calc(2 * var(--border-width)) solid black;
     height: calc(3 * var(--border-width));
+    top: calc(9 * var(--border-width));;
 }
-
-h1 > span {
-    display: block;
-    margin: .5rem 0;
-}
-
-h1 > span:first-line { font-size: 1.75rem }
-h1 span span:first-of-type, h1 span span:nth-of-type(9), h1 span span:nth-of-type(14) { color: var(--smw-red-mid) }
-h1 span span:nth-of-type(2), h1 span span:nth-of-type(4), h1 span span:nth-of-type(7), h1 span span:nth-of-type(12) { color: var(--smw-blue-mid) }
-h1 span span:nth-of-type(3), h1 span span:nth-of-type(8), h1 span span:nth-of-type(11) { color: var(--smw-yellow-mid) }
-h1 span span:nth-of-type(5), h1 span span:nth-of-type(6), h1 span span:nth-of-type(10), h1 span span:nth-of-type(13), h1 span:nth-of-type(15) { color: var(--smw-green-mid) }
 
 ol {
     background: linear-gradient(
         to right,
-        var(--smw-green-shd) 11%, /* 11% */
-        var(--smw-green-mid) 11% 18%, /* 7% */
-        var(--smw-green-hig) 18% 25%, /* 7% */
+        var(--smw-pipe-shd) 11%, /* 11% */
+        var(--smw-pipe-mid) 11% 18%, /* 7% */
+        var(--smw-pipe-hig) 18% 25%, /* 7% */
         white 25% 36%, /* 11% */
-        var(--smw-green-hig) 36% 54%, /* 18% */
-        var(--smw-green-mid) 54% 67%, /* 13% */
-        var(--smw-green-shd) 67% 71%, /* 4% */
-        var(--smw-green-mid) 71% 75%, /* 4% */
-        var(--smw-green-shd) 75% 93%, /* 18% */
+        var(--smw-pipe-hig) 36% 54%, /* 18% */
+        var(--smw-pipe-mid) 54% 67%, /* 13% */
+        var(--smw-pipe-shd) 67% 71%, /* 4% */
+        var(--smw-pipe-mid) 71% 75%, /* 4% */
+        var(--smw-pipe-shd) 75% 93%, /* 18% */
         black 93% /* 7% */
     );
     counter-reset: place;
@@ -141,11 +221,19 @@ li {
 
     align-items: center;
     color: white;
+    column-gap: .5rem;
     counter-increment: place;
     display: flex;
     margin: 0;
     padding: 1rem;
-    column-gap: .5rem;
+    text-shadow: 0 var(--border-width-inv) 0 black,
+        var(--border-width) var(--border-width-inv) 0 black,
+        var(--border-width) 0 0 black,
+        var(--border-width) var(--border-width) 0 black,
+        0 var(--border-width) 0 black,
+        var(--border-width-inv) var(--border-width) 0 black,
+        var(--border-width-inv) 0 0 black,
+        var(--border-width-inv) var(--border-width-inv) 0 black;
 }
 
 li:first-of-type {
@@ -244,21 +332,12 @@ li > span:first-child > span > span > span:after {
     color: white;
     content: counter(place);
     display: flex;
-    font-family: 'Super Mario World', sans-serif;
     font-size: 2rem;
     justify-content: center;
     letter-spacing: -0.04em;
     line-height: 0;
     min-height: calc(10 * var(--border-width));
     padding-left: .25rem;
-    text-shadow: 0 var(--border-width-inv) 0 black,
-        var(--border-width) var(--border-width-inv) 0 black,
-        var(--border-width) 0 0 black,
-        var(--border-width) var(--border-width) 0 black,
-        0 var(--border-width) 0 black,
-        var(--border-width-inv) var(--border-width) 0 black,
-        var(--border-width-inv) 0 0 black,
-        var(--border-width-inv) var(--border-width-inv) 0 black;
 }
 
 li > span:last-child {
