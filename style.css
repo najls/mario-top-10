@@ -88,20 +88,18 @@ h1 > span > span:nth-last-of-type(2) {
 }
 
 h1 > span:first-of-type,
-h1 > span:nth-of-type(2) { left: calc(3 * var(--border-width)) }
-h1 > span:nth-of-type(3) { left: calc(2 * var(--border-width)) }
-h1 > span:nth-of-type(4) { left: calc(3 * var(--border-width-inv)) }
-h1 > span:nth-of-type(5) { left: calc(4 * var(--border-width-inv)) }
-h1 > span:nth-of-type(6) { left: calc(12 * var(--border-width)) }
-h1 > span:nth-of-type(7) { left: calc(2 * var(--border-width-inv)) }
-h1 > span:nth-of-type(8) { left: calc(5 * var(--border-width-inv)) }
-h1 > span:nth-of-type(9) { left: calc(6 * var(--border-width-inv)) }
-h1 > span:nth-of-type(10) { left: calc(13 * var(--border-width-inv)) }
-h1 > span:nth-of-type(11) { left: calc(6 * var(--border-width)) }
-h1 > span:nth-of-type(12) { left: calc(6 * var(--border-width-inv)) }
-h1 > span:nth-of-type(13) { left: calc(11 * var(--border-width-inv)) }
-h1 > span:nth-of-type(14) { left: calc(9 * var(--border-width-inv)) }
-h1 > span:nth-of-type(15) { left: calc(11 * var(--border-width-inv)) }
+h1 > span:nth-of-type(2) { left: calc(8 * var(--border-width)) }
+h1 > span:nth-of-type(3) { left: calc(7 * var(--border-width)) }
+h1 > span:nth-of-type(4) { left: calc(2 * var(--border-width)) }
+h1 > span:nth-of-type(5) { left: var(--border-width) }
+h1 > span:nth-of-type(6) { left: calc(17 * var(--border-width)) }
+h1 > span:nth-of-type(7) { left: calc(3 * var(--border-width)) }
+h1 > span:nth-of-type(9) { left: var(--border-width-inv) }
+h1 > span:nth-of-type(10) { left: calc(8 * var(--border-width-inv)) }
+h1 > span:nth-of-type(11) { left: calc(12 * var(--border-width)) }
+h1 > span:nth-of-type(13) { left: calc(5 * var(--border-width-inv)) }
+h1 > span:nth-of-type(14) { left: calc(12 * var(--border-width-inv)) }
+h1 > span:nth-of-type(15) { left: calc(14 * var(--border-width-inv)) }
 
 h1 > span:nth-of-type(4) > span:not(:nth-of-type(2)) { z-index: -1 }
 h1 > span:nth-of-type(7) > span:not(:nth-of-type(2)) { z-index: -4 }
@@ -128,6 +126,8 @@ h1 > span > span:last-of-type {
     font-family: 'Mario World Pixel Outline', sans-serif;
     text-shadow: none;
 }
+
+h1 > span > span:nth-of-type(even), h1 > span > span:nth-of-type(3n), h1 br { user-select: none }
 
 main { padding: 0 1rem }
 
