@@ -15,55 +15,116 @@
     <main>
         <div></div>
         <ol>
-            <li>
+            <li class="hidden">
                 <span><span><span><span></span></span></span></span>
                 <span>Super Mario World</span>
             </li>
-            <li>
+            <li class="hidden">
                 <span><span><span><span></span></span></span></span>
                 <span>Super Mario Galaxy</span>
             </li>
-            <li>
+            <li class="hidden">
                 <span><span><span><span></span></span></span></span>
                 <span>Super Mario Galaxy 2</span>
             </li>
-            <li>
+            <li class="hidden">
                 <span><span><span><span></span></span></span></span>
                 <span>Super Mario 64</span>
             </li>
-            <li>
+            <li class="hidden">
                 <span><span><span><span></span></span></span></span>
                 <span>Super Mario Bros. 3</span>
             </li>
-            <li>
+            <li class="hidden">
                 <span><span><span><span></span></span></span></span>
                 <span>Super Mario Bros.</span>
             </li>
-            <li>
+            <li class="hidden">
                 <span><span><span><span></span></span></span></span>
                 <span>Super Mario Bros. 2 (JP)</span>
             </li>
-            <li>
+            <li class="hidden">
                 <span><span><span><span></span></span></span></span>
                 <span>Yoshi's Island</span>
             </li>
-            <li>
+            <li class="hidden">
                 <span><span><span><span></span></span></span></span>
                 <span>Super Mario 3D Land</span>
             </li>
-            <li>
+            <li class="hidden">
                 <span><span><span><span></span></span></span></span>
                 <span>Super Mario Land</span>
             </li>
-            <li>
+            <li class="hidden">
                 <span><span><span><span></span></span></span></span>
                 <span>Super Mario Sunshine</span>
             </li>
-            <li>
+            <li class="hidden">
                 <span><span><span><span></span></span></span></span>
                 <span>Super Mario Bros. 2 (EU)</span>
             </li>
         </ol>
     </main>
+    <script>
+        var liCollection = document.getElementsByTagName('li');
+        var audioContext;
+        var samples;
+
+        const samplePaths = ['./smw_kick.wav', './smw_riding_yoshi.wav'];
+
+        audioContext = new AudioContext();
+        setupSamples(samplePaths).then((response) => {
+            samples = response;
+        });
+
+        document.body.addEventListener('click', function() {
+            for (let i = liCollection.length - 1; i >= 0; i--) {
+                play(i);
+
+                if (liCollection[i].classList.contains('hidden')) {
+                    liCollection[i].classList.remove('hidden');
+                    break;
+                }
+            }
+        });
+
+        function play(index) {
+            var kick = document.getElementById('kick');
+            var ride = document.getElementById('ride');
+
+            switch (index) {
+                case 2:
+                    playSample(samples[0], 0);
+                    break;
+                default:
+                    playSample(samples[1], 0);
+            }
+        }
+
+        async function getAudioFile(path) {
+            const response = await fetch(path);
+            const arrayBuffer = await response.arrayBuffer();
+            const audioBuffer = await audioContext.decodeAudioData(arrayBuffer);
+            return audioBuffer;
+        }
+
+        async function setupSamples(paths) {
+            const audioBuffers = [];
+
+            for (const path of paths) {
+                const sample = await getAudioFile(path);
+                audioBuffers.push(sample);
+            }
+
+            return audioBuffers;
+        }
+
+        function playSample(audioBuffer, time) {
+            const sampleSource = audioContext.createBufferedSource();
+            sampleSource.buffer = audioBuffer;
+            sampleSource.connect(audioContext.destination);
+            sampleSource.start(time);
+        }
+    </script>
 </body>
 </html>
