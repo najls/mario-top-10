@@ -226,7 +226,6 @@ li {
 
     align-items: center;
     color: white;
-    column-gap: calc(2 * var(--border-width));
     counter-increment: place;
     display: flex;
     margin: 0;
@@ -260,6 +259,7 @@ li span:after, li span:before { display: block }
 
 li > span:first-child {
     display: inline-block;
+    margin-right: calc(2 * var(--border-width));
     min-width: calc(16 * var(--border-width));
 }
 
