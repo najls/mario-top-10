@@ -76,11 +76,9 @@ h1 {
     margin: 0 0 1rem;
     overflow: hidden;
     text-align: center;
-    text-transform: uppercase;
     white-space: nowrap;
 }
 
-h1::first-line { text-transform: lowercase !important }
 h1 > span:first-of-type, h1 > span:nth-of-type(9), h1 > span:nth-of-type(14) { color: var(--smw-text-red) !important }
 h1 > span:nth-of-type(2), h1 > span:nth-of-type(4), h1 > span:nth-of-type(7), h1 > span:nth-of-type(12) { color: var(--smw-text-blue) }
 h1 > span:nth-of-type(3), h1 > span:nth-of-type(8), h1 > span:nth-of-type(11) { color: var(--smw-text-yellow) }
@@ -121,7 +119,6 @@ h1 > span > span:nth-of-type(2) { z-index: -3 }
 
 h1 > span > span:not(:first-of-type) {
     position: absolute;
-    text-transform: none;
     top: .167em;
     left: 0;
 }
