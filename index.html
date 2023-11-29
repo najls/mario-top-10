@@ -95,7 +95,7 @@
 
         document.body.addEventListener('click', function() {
             for (let i = liCollection.length - 1; i >= 0; i--) {
-                play(i);
+                play(i, i < 9 ? i + 1 : null);
 
                 if (liCollection[i].classList.contains('hidden')) {
                     liCollection[i].classList.remove('hidden');
@@ -104,11 +104,8 @@
             }
         });
 
-        function play(index) {
-            for(let i = 0; i < audioArray.length; i++) {
-                audioArray[i].pause();
-            };
-
+        function play(index, pause) {
+            if (pause) audioArray[pause].pause();
             audioArray[index].play().catch((e) => { });
         }
     </script>
