@@ -58,21 +58,40 @@
         </ol>
     </main>
 
+    <audio preload="auto">
+        <source src="audio/smw_midway_gate.wav" type="audio/wav">
+    </audio>
+    <audio preload="auto">
+        <source src="audio/smw_1-up.wav" type="audio/wav">
+    </audio>
+    <audio preload="auto">
+        <source src="audio/smw_power-up.wav" type="audio/wav">
+    </audio>
+    <audio preload="auto">
+        <source src="audio/smw_power-up_appears.wav" type="audio/wav">
+    </audio>
+    <audio preload="auto">
+        <source src="audio/smw_egg_hatching.wav" type="audio/wav">
+    </audio>
+    <audio preload="auto">
+        <source src="audio/smw_dragon_coin.wav" type="audio/wav">
+    </audio>
+    <audio preload="auto">
+        <source src="audio/smw_coin.wav" type="audio/wav">
+    </audio>
+    <audio preload="auto">
+        <source src="audio/smw_kick.wav" type="audio/wav">
+    </audio>
+    <audio preload="auto">
+        <source src="audio/smw_jump.wav" type="audio/wav">
+    </audio>
+    <audio preload="auto">
+        <source src="audio/smw_pipe.wav" type="audio/wav">
+    </audio>
+
     <script>
         var liCollection = document.getElementsByTagName('li');
-        var audio = new Audio();
-        var fileArray = [
-            './audio/smw_pipe.wav',
-            './audio/smw_jump.wav',
-            './audio/smw_kick.wav',
-            './audio/smw_coin.wav',
-            './audio/smw_dragon_coin.wav',
-            './audio/smw_egg_hatching.wav',
-            './audio/smw_power-up_appears.wav',
-            './audio/smw_power-up.wav',
-            './audio/smw_1-up.wav',
-            './audio/smw_midway_gate.wav'
-        ];
+        var audioArray = document.getElementsByTagName('audio');
 
         document.body.addEventListener('click', function() {
             for (let i = liCollection.length - 1; i >= 0; i--) {
@@ -86,44 +105,11 @@
         });
 
         function play(index) {
-            let file;
+            for(let i = 0; i < audioArray.length; i++) {
+                audioArray[i].pause();
+            };
 
-            switch (index) {
-                case 0:
-                    file = fileArray[9];
-                    break;
-                case 1:
-                    file = fileArray[8];
-                    break;
-                case 2:
-                    file = fileArray[7];
-                    break;
-                case 3:
-                    file = fileArray[6];
-                    break;
-                case 4:
-                    file = fileArray[5];
-                    break;
-                case 5:
-                    file = fileArray[4];
-                    break;
-                case 6:
-                    file = fileArray[3];
-                    break;
-                case 7:
-                    file = fileArray[2];
-                    break;
-                case 8:
-                    file = fileArray[1];
-                    break;
-                default:
-                    file = fileArray[0];
-            }
-
-            audio.src = file;
-            audio.play().catch((e) => {
-                // supress
-            });
+            audioArray[index].play().catch((e) => { });
         }
     </script>
 </body>
