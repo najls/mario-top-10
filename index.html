@@ -91,23 +91,17 @@
 
     <script>
         var liCollection = document.getElementsByTagName('li');
-        var audioArray = document.getElementsByTagName('audio');
+        var audioCollection = document.getElementsByTagName('audio');
 
         document.body.addEventListener('click', function() {
             for (let i = liCollection.length - 1; i >= 0; i--) {
-                play(i, i < 9 ? i + 1 : null);
-
                 if (liCollection[i].classList.contains('hidden')) {
+                    audioCollection[i].play().catch((e) => { });
                     liCollection[i].classList.remove('hidden');
                     break;
                 }
             }
         });
-
-        function play(index, pause) {
-            if (pause) audioArray[pause].pause();
-            audioArray[index].play().catch((e) => { });
-        }
     </script>
 </body>
 </html>
